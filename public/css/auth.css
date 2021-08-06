@@ -1,0 +1,70 @@
+.section-form {
+    height: 100vh;
+}
+
+.section-box {
+    max-width: 400px;
+
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-box {
+    background-color: rgb(46, 46, 46);
+    border-radius: 5px;
+    padding: 25px
+}
+
+.box-img {
+    display: flex;
+    justify-content: center;
+
+    margin: 25px 0;
+}
+
+#img {
+    background-image: url('/images/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    border-radius: 5px;
+
+    height: 70.5px;
+    width: 11rem;
+}
+
+.form-title {
+    margin-bottom: 20px;
+}
+
+#title {
+    font-size: 24pt;
+}
+
+.form-input {
+    margin-bottom: 10px;
+}
+
+.form-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    display: flex;
+    justify-content: center;
+}
+
+#submit {
+    background-color: rgb(226, 147, 28);
+    color: aliceblue;
+    font-weight: bold;
+
+    width: 100%;
+}

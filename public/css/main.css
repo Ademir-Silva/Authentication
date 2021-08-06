@@ -1,0 +1,46 @@
+* {padding: 0; margin: 0; box-sizing: border-box;}
+
+html {
+    font-family: 'Roboto', sans-serif;
+
+    height: 100%;
+}
+
+body {
+    background-color: #231f20;
+
+    height: 100%;
+}
+
+main {
+    min-height: 100%;
+
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+h1, h2, h3, h4, h5, p, label {
+    color: aliceblue;
+}
+
+input, button {
+    border: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: rgba(248, 248, 248, 0.733);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(226, 147, 28);
+    transition: .5s;
+}
