@@ -5,42 +5,48 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Models\User;
+use App\Models\Admin;
 
 class AuthController extends Controller{
 
-    public function authenticate(Request $request){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+    function accessLogin(){
+        return view('auth.login');
+    }
+
+    function accessRegister(){
+        return view('auth.register');
+    }
+
+    function save(Request $request){
+        $request->validate([
+            'name' => 'required|min:3|max:60',
+            'email' => 'required|email|max:255|unique:admins',
+            'password' => 'required|min:5|max:32'
         ]);
 
-        if (Auth::attempt([$credentials, 'active' => 1])) {
-            $request->session()->regenerate();
+        $admin = new Admin;
 
-            return redirect()->intended('welcome');
+        $admin->type = 2;
+        $admin->active = true;
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+
+        $save = $admin->save();
+
+        if ($save) {
+            return back()->with('success', 'New user has been successfuly added to database!');
+        } else {
+            return back()->with('fail', 'Something went wrong, try again later');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
     }
-
-    public function register(Request $request)
-    {
+    
+    /* function autenticate(Request $request){
         $request->validate([
-            'name' => 'required|string|min:3|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required|min:8', 'confirmed'],
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:5|max:32'
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'active' => 1,
-        ])->givePermissionsTo('user');
-
-        return redirect('login');
-    }
+    } */
 }

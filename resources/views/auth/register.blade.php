@@ -9,20 +9,26 @@
 @section('content')
     <div class="section-form">
         <div class="section-box">
-            @if(session('msg_warning'))
-                <div class="alert alert-warning" id="msg_warning">
-                    {{ session('msg_warning') }}
-                </div>
-            @endif
-
             <div class="container">
+                @if (Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+
+                @if (Session::get('fail'))
+                    <div class="alert alert-dander">
+                        {{ Session::get('fail') }}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col">
                         <div class="box-img">
                             <div id="img"></div>
                         </div>
 
-                        <form action="{{ route('login') }}" method="post" class="form-box">
+                        <form action="{{ route('auth.save') }}" method="post" class="form-box">
                             @csrf
 
                             <div class="form-title">
@@ -31,31 +37,24 @@
 
                             <div class="form-input">
                                 <label class="form-label">Nome:</label>
-                                <input class="form-control" id="name" name="name" type="text" required>
-                            </div>
-
-                            <div class="form-input">
-                                <label class="form-label">Sobrenome:</label>
-                                <input class="form-control" id="family-name" name="family-name" type="text" required>
+                                <input class="form-control" id="name" name="name" type="text" minlength="3" maxlength="60" required value="{{ old('name') }}">
+                                <span class="text-danger">@error('name'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">E-mail:</label>
-                                <input class="form-control" id="email" name="email" type="email" required>
+                                <input class="form-control" id="email" name="email" type="email" maxlength="255" required value="{{ old('email') }}">
+                                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">Senha:</label>
-                                <input class="form-control" id="password" name="password" type="password" required>
-                            </div>
-
-                            <div class="form-input">
-                                <label class="form-label">Repetir senha:</label>
-                                <input class="form-control" id="check-password" name="check-password" type="password" required>
+                                <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('password') }}">
+                                <span class="text-danger">@error('password'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-links">
-                                <p>Já tem conta? <a href="{{ route('accessLogin') }}">Logar</a></p>
+                                <p>Já tem conta? <a href="{{ route('auth.login') }}">Logar</a></p>
                             </div>
 
                             <div class="form-btn">

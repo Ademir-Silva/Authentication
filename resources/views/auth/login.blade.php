@@ -9,18 +9,6 @@
 @section('content')
     <div class="section-form">
         <div class="section-box">
-            @if(session('msg_warning'))
-                <div class="alert alert-warning" id="msg_warning">
-                    {{ session('msg_warning') }}
-                </div>
-            @endif
-
-            @if(session('msg_success'))
-                <div class="alert alert-success" id="msg_success">
-                    {{ session('msg_success') }}
-                </div>
-            @endif
-
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -28,7 +16,7 @@
                             <div id="img"></div>
                         </div>
 
-                        <form action="" method="post" class="form-box">
+                        <form action="{{ route('authenticate') }}" method="post" class="form-box">
                             @csrf
 
                             <div class="form-title">
@@ -37,16 +25,16 @@
 
                             <div class="form-input">
                                 <label class="form-label">E-mail:</label>
-                                <input class="form-control" id="email" name="email" type="email" required>
+                                <input class="form-control" id="email" name="email" type="email" maxlength="255" required>
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">Senha:</label>
-                                <input class="form-control" id="password" name="password" type="password" required>
+                                <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="32" required>
                             </div>
 
                             <div class="form-links">
-                                <a href="">Cadastrar-me</a>
+                                <a href="{{ route('auth.register') }}">Cadastrar-me</a>
                                 <a href="#">Esqueci a senha</a>
                             </div>
 

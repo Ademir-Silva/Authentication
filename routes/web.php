@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 
-Route::get('/', function (){
-    return view('auth/login');
-});
-
-Route::get('/welcome', function (){
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function (){
-    return view('auth/register');
-});
+/* === Auth === */
+
+Route::get('/auth/login', [AuthController::class, 'accessLogin'])->name('auth.login');
+Route::get('/auth/register', [AuthController::class, 'accessRegister'])->name('auth.register');
+Route::post('/auth/save', [AuthController::class, 'save'])->name('auth.save');
+
