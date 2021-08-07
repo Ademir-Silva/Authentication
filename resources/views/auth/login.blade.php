@@ -31,14 +31,14 @@
 
                             <div class="form-input">
                                 <label class="form-label">E-mail:</label>
-                                <input class="form-control" id="email" name="email" type="email" required value="{{ old('name') }}">
-                                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+                                <input class="form-control @error('email') is-invalid @enderror" name="email" type="email" required value="{{ old('name') }}">
+                                @error('email')<span class="invalid-feedback">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">Senha:</label>
-                                <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('name') }}">
-                                <span class="text-danger">@error('password'){{ $message }} @enderror</span>
+                                <input class="form-control @error('password') is-invalid @enderror" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('password') }}">
+                                @error('password')<span class="invalid-feedback">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-links">

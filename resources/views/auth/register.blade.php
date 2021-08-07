@@ -37,20 +37,26 @@
 
                             <div class="form-input">
                                 <label class="form-label">Nome:</label>
-                                <input class="form-control" id="name" name="name" type="text" minlength="3" maxlength="60" required value="{{ old('name') }}">
-                                <span class="text-danger">@error('name'){{ $message }} @enderror</span>
+                                <input class="form-control @error('name') is-invalid @enderror" name="name" type="text" minlength="3" maxlength="60" required value="{{ old('name') }}">
+                                <span class="invalid-feedback">@error('name'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">E-mail:</label>
-                                <input class="form-control" id="email" name="email" type="email" required value="{{ old('email') }}">
-                                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+                                <input class="form-control @error('email') is-invalid @enderror" name="email" type="email" required value="{{ old('email') }}">
+                                <span class="invalid-feedback">@error('email'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-input">
                                 <label class="form-label">Senha:</label>
-                                <input class="form-control" id="password" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('password') }}">
-                                <span class="text-danger">@error('password'){{ $message }} @enderror</span>
+                                <input class="form-control @error('password') is-invalid @enderror" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('password') }}">
+                                <span class="invalid-feedback">@error('password'){{ $message }} @enderror</span>
+                            </div>
+
+                            <div class="form-input">
+                                <label class="form-label">Conferir senha:</label>
+                                <input class="form-control @error('checkPassword') is-invalid @enderror" name="checkPassword" type="password" minlength="5" maxlength="32" required value="{{ old('checkPassword') }}">
+                                <span class="invalid-feedback">@error('checkPassword'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-links">

@@ -20,7 +20,8 @@ class AuthController extends Controller{
         $request->validate([
             'name' => 'required|min:3|max:60',
             'email' => 'required|email|unique:admins',
-            'password' => 'required|min:5|max:32'
+            'password' => 'required|min:5|max:32',
+            'checkPassword' => 'required|min:5|max:32|same:old_password'
         ]);
 
         $admin = new Admin;
