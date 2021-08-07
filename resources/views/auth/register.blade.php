@@ -12,12 +12,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        @if (Session::get('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-
                         @if (Session::get('fail'))
                             <div class="alert alert-danger">
                                 {{ Session::get('fail') }}
@@ -51,12 +45,6 @@
                                 <label class="form-label">Senha:</label>
                                 <input class="form-control @error('password') is-invalid @enderror" name="password" type="password" minlength="5" maxlength="32" required value="{{ old('password') }}">
                                 <span class="invalid-feedback">@error('password'){{ $message }} @enderror</span>
-                            </div>
-
-                            <div class="form-input">
-                                <label class="form-label">Conferir senha:</label>
-                                <input class="form-control @error('checkPassword') is-invalid @enderror" name="checkPassword" type="password" minlength="5" maxlength="32" required value="{{ old('checkPassword') }}">
-                                <span class="invalid-feedback">@error('checkPassword'){{ $message }} @enderror</span>
                             </div>
 
                             <div class="form-links">

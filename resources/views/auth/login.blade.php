@@ -12,6 +12,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
+                        @if (Session::get('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+
                         @if (Session::get('fail'))
                             <div class="alert alert-danger">
                                 {{ Session::get('fail') }}

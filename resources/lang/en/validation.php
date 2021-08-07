@@ -108,7 +108,7 @@ return [
     'prohibited' => 'The :attribute field is prohibited.',
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
-    'same' => ':attribute e :other devem corresponder!',
+    'same' => ':attribute e :other tem que corresponder!',
     'size' => [
         'numeric' => 'The :attribute must be :size.',
         'file' => 'The :attribute must be :size kilobytes.',

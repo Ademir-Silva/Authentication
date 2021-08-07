@@ -21,7 +21,6 @@ class AuthController extends Controller{
             'name' => 'required|min:3|max:60',
             'email' => 'required|email|unique:admins',
             'password' => 'required|min:5|max:32',
-            'checkPassword' => 'required|min:5|max:32|same:old_password'
         ]);
 
         $admin = new Admin;
@@ -31,11 +30,12 @@ class AuthController extends Controller{
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
+        $admin->image = 'image.png';
 
         $save = $admin->save();
 
         if ($save) {
-            return back()->with('success', 'O usuário foi cadastrado com sucesso!');
+            return redirect()->route('auth.accessLogin')->with('success', 'O usuário foi cadastrado com sucesso!');
         } else {
             return back()->with('fail', 'Ocorreu um erro, tente novamento mais tarde!');
         }
