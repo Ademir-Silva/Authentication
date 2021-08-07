@@ -10,20 +10,20 @@
     <div class="section-form">
         <div class="section-box">
             <div class="container">
-                @if (Session::get('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-
-                @if (Session::get('fail'))
-                    <div class="alert alert-dander">
-                        {{ Session::get('fail') }}
-                    </div>
-                @endif
-
                 <div class="row">
                     <div class="col">
+                        @if (Session::get('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+
+                        @if (Session::get('fail'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('fail') }}
+                            </div>
+                        @endif
+
                         <div class="box-img">
                             <div id="img"></div>
                         </div>
@@ -43,7 +43,7 @@
 
                             <div class="form-input">
                                 <label class="form-label">E-mail:</label>
-                                <input class="form-control" id="email" name="email" type="email" maxlength="255" required value="{{ old('email') }}">
+                                <input class="form-control" id="email" name="email" type="email" required value="{{ old('email') }}">
                                 <span class="text-danger">@error('email'){{ $message }} @enderror</span>
                             </div>
 
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-links">
-                                <p>Já tem conta? <a href="{{ route('auth.login') }}">Logar</a></p>
+                                <p>Já tem conta? <a href="{{ route('auth.accessLogin') }}">Logar</a></p>
                             </div>
 
                             <div class="form-btn">

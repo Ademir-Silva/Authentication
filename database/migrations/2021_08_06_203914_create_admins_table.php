@@ -17,9 +17,9 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->enum('type', array('admin', 'user'));
             $table->boolean('active');
-            $table->text('name');
-            $table->text('email')->unique();
-            $table->text('password');
+            $table->string('name', 60);
+            $table->string('email')->unique();
+            $table->string('password', 60);
             $table->timestamps();
         });
     }
