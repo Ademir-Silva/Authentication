@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="form-btn">
-                                <button class="btn" id="submit" name="submit" type="submit">Entrar</button>
+                                <button class="btn" id="submit" name="submit" type="submit">Cadastrar</button>
                             </div>
                         </form>
                     </div>
